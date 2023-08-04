@@ -10,14 +10,14 @@
         body {
     font-family: "Montserrat", sans-serif;
     background-color:#c2e2c0;
-  }
+    }
 
 h1 {
     text-transform: uppercase;
     text-align:center;
     color:darkgreen;
 }
-div, input{
+div, textarea{
     padding-left: 10px;
     padding-top: 5px;
     height:20vh;
@@ -25,7 +25,7 @@ div, input{
 .review{
     border-color: black;
     border: thin dashed green;
-    background-color: azure;
+    background-color: {{color_variable}};
     height: 30vh;
 }
 .rating{
@@ -39,7 +39,7 @@ div, input{
 div{
     height:2vh;
 }
-input{
+textarea{
     margin-top: 3vh;
     width: 50vw;
     margin-left: 25%;
@@ -63,25 +63,11 @@ button{
     <div class="review">{{variable}}</div>
     <div class="rating">{{variable2}}</div>
     <form method="POST">
-        <input class="text" name='text' placeholder="Enter your review">
+        <textarea class="text" name='text' placeholder="Enter your review"></textarea>
         <div></div>
         <button class="get_result">Enter</button>
     </form>
     </div>
 </body>
-<script>
-    $(document).ready(function(){
-    $('.wrapper').on('click', '.get_result', function(){
-        var val1 = $(".text").val();
-        $.ajax({
-        url: "/",
-        type: "get",
-        data: {val1: val1},
-        success: function(response) {
-            $(".review").html('<div class="review">'+response.result.toString()+'</div>');
-        },
-        });
-    });
-    });
-</script>
+
 </html>
