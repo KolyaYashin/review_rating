@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="templates/style.css" />
+    <title>Home</title>
+    <style>
+        body {
+    font-family: "Montserrat", sans-serif;
+    background-color:#c2e2c0;
+  }
+
+h1 {
+    text-transform: uppercase;
+    text-align:center;
+    color:darkgreen;
+}
+div, input{
+    padding-left: 10px;
+    padding-top: 5px;
+    height:20vh;
+}
+.review{
+    border-color: black;
+    border: thin dashed green;
+    background-color: azure;
+    height: 30vh;
+}
+.rating{
+    border-color: black;
+    border: thin dashed green;
+    background-color: azure;
+    height:5vh;
+    margin-top:2vh;
+    border-color: black;
+}
+div{
+    height:2vh;
+}
+input{
+    margin-top: 3vh;
+    width: 50vw;
+    margin-left: 25%;
+    height: 30vh;
+}
+button{
+    width:50vw;
+    margin-left:25%;
+    height:10vh;
+    background-color: darkgreen;
+    color:beige;
+    font-size: larger;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Review rating and sentiment analys</h1>
+    <div class="wrapper">
+    <div class="review">{{variable}}</div>
+    <div class="rating">{{variable2}}</div>
+    <form method="POST">
+        <input class="text" name='text' placeholder="Enter your review">
+        <div></div>
+        <button class="get_result">Enter</button>
+    </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+    $('.wrapper').on('click', '.get_result', function(){
+        var val1 = $(".text").val();
+        $.ajax({
+        url: "/",
+        type: "get",
+        data: {val1: val1},
+        success: function(response) {
+            $(".review").html('<div class="review">'+response.result.toString()+'</div>');
+        },
+        });
+    });
+    });
+</script>
+</html>
