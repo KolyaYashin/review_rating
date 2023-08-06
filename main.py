@@ -40,4 +40,4 @@ def comment():
     return render_template('home.html',variable=text,variable2='Rating of this review is '+str(rate), color_variable = color_var)
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5000)
