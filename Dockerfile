@@ -10,5 +10,11 @@ COPY . .
 # Установим необходимые пакеты
 RUN pip install -r requirements.txt
 
+
+ENV FLASK_APP=main.py
+
+EXPOSE 5000
+
 # Укажем команду для запуска приложения
-CMD ["python", "main.py"]
+#CMD ["python", "main.py"]
+CMD ["flask", "run", "--host=0.0.0.0"]
